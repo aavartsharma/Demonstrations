@@ -17,7 +17,7 @@ class BitGrid(Scene):
         circle_1 = Circle(radius=1,stroke_width=3)
         circle_1.set_fill(color=[BLUE,BLACK,PURPLE],opacity=1)
         circle_1.add_updater(
-    lambda m, dt: m.set_fill(color=interpolate_color(BLUE, RED, (time.time() % 1)))
+    lambda m, dt: m.set_fill(color=interpolate_color(BLUE, RED, (random.random())))
 )
         group_bit = VGroup(circle_1,Text(str(random.randint(0, 1)), font_size=64))
         group_bit.move_to(ORIGIN+UP)
@@ -37,7 +37,7 @@ class BitGrid(Scene):
             circle.set_fill(color=[BLUE,BLACK,PURPLE],opacity=1)
             circle.set_stroke(RED, width=2)
 
-            circle.add_updater(gradient_shift)
+            circle.add_updater(lambda m, dt: m.set_fill(color=dt*interpolate_color(BLUE, RED, (int(random.random()>0.5)))))
             #circle.set_color(YELLOW)
 
             # Put the bit text inside the circle
@@ -57,7 +57,7 @@ class BitGrid(Scene):
             text2 = MathTex(f'2^{{{i+1}}} = {2**(i+1):,}') 
             text2.to_edge(DOWN)
             self.play(
-                ReplacementTransform(text,(text:=text2),path_arc = PI+1)
+                ReplacementTransform(text,(text:=text2),path_arc = PI+1),
                 FadeIn(bits[i], scale=0.2),
                 run_time=0.4
             )

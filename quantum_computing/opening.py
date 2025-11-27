@@ -12,7 +12,7 @@ class opening(ThreeDScene):
         self.begin_ambient_camera_rotation(rate=40*DEGREES, about='theta')
         vec1 = Arrow3D(
                 start=[0,0,0],
-                end=[1/(3**0.5),1/(3**0.5),1/(3**0.5)],
+                end=[1,1,1],
                 resolution=16
         )
         vec1.set_color(GREEN)
@@ -27,7 +27,7 @@ class opening(ThreeDScene):
         )
 
         # Vector endpoint (x, y)
-        vec_end = np.array([0.45, 0.34, 0])
+        vec_end = np.array([2, 3, 0])
 
         # Create the vector
         vector = Vector(vec_end, color=YELLOW)
@@ -41,14 +41,13 @@ class opening(ThreeDScene):
 
         plan = VGroup(plane,vector,label)
         self.play(ReplacementTransform(all_qu,plan))
-        self.wait(5)
         eq = MathTex(r"|\psi\rangle = a|0\rangle + b|1\rangle")
 
         # Make it large and centered
         eq.scale(1.5)
 
         # Animate writing the equation
-        self.wait(3)
+        self.wait(2.5)
         self.play(ReplacementTransform(plan,eq), run_time=2)
         X = q_gates.gate("X")
         Y = q_gates.gate("Y")
@@ -95,5 +94,5 @@ class opening(ThreeDScene):
 
         # Animate drawing the vector
 
-        self.wait(4)
+        self.wait(1.5)
         

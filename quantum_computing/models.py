@@ -73,6 +73,7 @@ class logic_gate():
 
         body.add(line,dot,line2,dot2,line_right,dot_right)
         label = Text("AND", font_size=28).next_to(body, DOWN, buff=0.1)
+        return VGroup(body, label)
 
         #alu_dia.scale(0.5)
         #self.play(LaggedStartMap(Write,alu_dia, lag_ratio=0.2))
@@ -87,7 +88,6 @@ class logic_gate():
 
         #self.wait()
 
-        return VGroup(body, label)
     
 class into(Scene):
     def von():
@@ -201,7 +201,7 @@ class into(Scene):
         connect2 = Line(point(body,angle+(3*(PI/2))) , inner_line.get_bottom()+UP*0.25) 
         # Base line (left)
         base = Line(inner_line.get_center(), body.get_left() + LEFT*1)
-        transistor = VGroup(body, collector, emitter, base, inner_line)
+        transistor = VGroup(body,connect1,connect2, collector, emitter, base, inner_line)
         return transistor
     def IC():
         R1 = Rectangle(width=1.5,height=1.5).set_color(GREEN)

@@ -8,12 +8,11 @@ atom and this is not an exetration (moore's law) to understand why we need clear
 let start with the toughest question i have ever tackled in my journey of computer science , what is a computer?
 -----
 
-let start with most basic and also toughest question i have ever tackled in my journeyof computer science, what is a computer?
-answer to this question is heavily dependent on era and [person perpective] for example we imagine computers like this (digital computer)
-in early 1900s the word 'computer' was referred to humans who computed tedious calculations,so i will stick to morden defination a computer
-is made of very simple components doing very simple things repesenting data , an ALU and a control mechanism, this components contains
+A computer is a programmable device that stores, retrieves, and processes data. The term "computer" was originally given to humans (human computers) who performed numerical calculations using mechanical calculators, such as the abacus and slide rule. The term was later given to mechanical devices as they began replacing human computers. Today's computers are electronic devices that accept data (input), process that data, produce output, and store (storage) the results (IPOS)
+
+computer is made of very simple components doing very simple things repesenting data , an ALU and a control mechanism, this components contains
 modules,which contains logic, which contains transistors, a transistors is the simplest form of a data in a digital eletrical computers, it repesents a bit 
-and basic works like a switch that can block electrons from moving in one direction, a typical scale for apple sillcon chips 4nm in 
+and basic works like a switch that can block electrons from moving in one direction, a typical scale for apple sillcon chips 20nm in 
 compartion that only 40 hydrogen atoms side by side, however with parts getting tinier and tinier quantum physics re making things
 tricky. havily simplfied , as transistors are shriinking to the siw of only a few atoms electrons may just transfre themselves to the 
 other end of transistors via a process called quantum tunneling, heavily simplfied in a classiscal mechanics a particle can't 

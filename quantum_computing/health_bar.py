@@ -2,33 +2,28 @@ from manim import *
 
 class bar_class():
     def __init__(self):
-        self.label = label
-        self.color_border = color_border
-        self.color = color
-        self.width = width
         self._object = None
     def __call__(self,color_border,color, label='',width=4):
-        if(self._object):
-            return self._object
+        self.width = width
         self.bar_frame = Rectangle(
-            width=self.width,
+            width=width,
             height=0.4,
             stroke_width=3,
-            color=self.color_border
+            color=color_border
         )
 
         # Filled health portion (start full)
         self.bar_fill = Rectangle(
-            width=self.width,
+            width=width,
             height=0.4,
-            color=self.color,
+            color=color,
             fill_opacity=1,
             stroke_width=0,
         )
         self.bar_fill.align_to(self.bar_frame, LEFT)  # anchor on the left
 
         # Text label
-        label = Text(self.label, font_size=28)
+        label = Text(label, font_size=28)
         label.next_to(self.bar_frame, LEFT, buff=0.2)
 
         # Group them

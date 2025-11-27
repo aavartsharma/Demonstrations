@@ -19,11 +19,13 @@ class ClassicalVsQuantum(Scene):
         ).shift(DOWN*2)
 
         # kentic energy bar
-        ke_bar_object = bar_class(WHITE,(170, 30, 150),'K.E',3)
+        ke_bar = bar_class()
+        ke_bar_object = ke_bar(WHITE,(170, 30, 150),'K.E',3)
         ke_bar_object.to_edge(UL)
         ke_anima= ke_bar.bar_change(0.8)
 
-        pe_bar_object = bar_class(WHITE,YELLOW,'P.E',3)
+        pe_bar = bar_class()
+        pe_bar_object = pe_bar(WHITE,YELLOW,'P.E',3)
         pe_bar_object.to_edge(UL).shift(DOWN*0.8)
         pe_anima = pe_bar.bar_change(0.5)
         # Text labeos
@@ -71,7 +73,8 @@ class ClassicalVsQuantum(Scene):
         ball.move_to(np.array([start_x,f(start_x)+ball_radius,0])).shift(DOWN*2)
 
         self.play(FadeIn(classical_ball)) 
-        self.play(ke_bar_object.bar_change(0.3))
+        self.play(ke_bar.bar_change(0.3))
+        self.wait(1.5)
         self.play(MoveAlongPath(ball,VMobject().set_points_as_corners(path_points)),run_time=3, rate_func=lambda x: x*(1-x))
 
 
@@ -81,7 +84,14 @@ class ClassicalVsQuantum(Scene):
         ball_radius =0.5
         e = Dot(radius=ball_radius, color=GRAY)
         ball_text = Text('e-',color=WHITE).scale(0.5).move_to(e.get_center())
-        q_ke_bar = bar_class(WHITE,(120,120,102),'K.E',3)  
+        q_ke_bar_object = bar_class()
+        q_ke_bar = q_ke_bar_object(WHITE,ORANGE,'K.E',3).to_edge(UL)
+        q_ke_anime = q_ke_bar_object.bar_change(0.4)
+
+        q_pe_bar_object = bar_class()
+        q_pe_bar = q_pe_bar_object(WHITE,YELLOW,'P.E',3).to_edge(UL).shift(DOWN*0.8)
+        q_pe_anime = q_pe_bar_object.bar_change(0.75)
+
         e = VGroup(e,ball_text)
 
         e.move_to(LEFT*3)
@@ -103,13 +113,13 @@ class ClassicalVsQuantum(Scene):
         path_points = []
         for x in np.linspace(start_x,5,30):
             path_points.append(np.array([x, 0.5*random(-2,1), 0]))
-        Quantum_elec = VGroup(title_q,e,ball_text,wave_1)
+        Quantum_elec = VGroup(title_q,e,ball_text,wave_1,q_ke_bar,q_pe_bar)
         self.wait(3)
         self.play(
             FadeOut(classical_ball,shift=RIGHT)
         )
         self.wait(2.5)
-        self.play(FadeIn(Quantum_elec,shift=LEFT))
+        self.play(FadeIn(Quantum_elec,shift=LEFT),q_ke_anime,q_pe_anime)
         for x in range(start_x,5):
             if(x==0):
                 continue
@@ -124,14 +134,4 @@ class ClassicalVsQuantum(Scene):
         #),run_time=3,rate_func=linear)
         
         self.play(FadeIn(e, run_time=0.5))
-
-
-        #self.play(classical_ball.animate.scale(0.25))
-        #self.play(classical_ball.animate.shift(LEFT*2))
-
-
-
-
-        # Show faint tunneled part
-
         self.wait()

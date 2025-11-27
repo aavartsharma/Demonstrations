@@ -23,6 +23,7 @@ class QubitAxisScene(ThreeDScene):
                     angle=self.camera.get_theta(), axis=OUT
                 ).rotate(
                     angle=self.camera.get_phi(), axis=RIGHT
+                )
             )
 
         self.play(Create(axes))
