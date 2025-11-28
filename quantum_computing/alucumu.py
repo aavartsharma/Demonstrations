@@ -13,5 +13,5 @@ class ComputerIntro(Scene):
         # Move title up
         self.play(Write(answer))
 
-        self.wait(0.5)
+        self.wait(15)
 

@@ -19,7 +19,7 @@ class a(Scene):
         classical_gate.add(input_A,input_B,result)
 
         q_label = Text("Quantum gate").next_to(line,RIGHT,buff=2).to_edge(UP)
-        x_gate = q_gates.gate("X").next_to(line,RIGHT,buff=3)
+        x_gate = q_gates.gate("X").next_to(line,RIGHT,buff=3).scale(0.75)
         sphere = Surface(
             lambda u, v: np.array([
                 1.5 * np.cos(u) * np.cos(v),
@@ -29,8 +29,8 @@ class a(Scene):
             checkerboard_colors=[RED_D, RED_E], resolution=(15, 32),fill_opacity=0.2
         )
         #video = Video("media/videos/qubit_scene/1080p60/qubit_scene.mp4").next_to(line,RIGHT,buff=2)
-        p1=ImageMobject('pics/p10062.png').scale(0.35).move_to(x_gate.get_center()).shift(LEFT*2)
-        p2 = ImageMobject('pics/p10094.png').scale(0.5).move_to(x_gate.get_center()).scale(0.01)
+        p1=ImageMobject('photos/pics/p10203.png').scale(0.25).move_to(x_gate.get_center()).shift(LEFT*2)
+        p2 = ImageMobject('photos/pics/p10419.png').scale(0.25).move_to(x_gate.get_center()).scale(0.01)
         self.play(Create(line))
         #self.add(sphere)
         self.play(Write(class_label),Write(q_label))
@@ -47,7 +47,7 @@ class a(Scene):
         )
         self.play(FadeOut(p1))
         self.play(
-            p2.animate.shift(RIGHT*2.5).scale(100),
+            p2.animate.shift(RIGHT*2.5).scale(75),
             run_time=3,
             rate_func=smooth
         )

@@ -13,6 +13,7 @@ class p1(ThreeDScene):
                 resolution=16
         )
         vec1.set_color(GREEN)
+        ImageMobject()
         self.play(FadeIn(q_1))
         self.play(FadeIn(vec1))
         self.wait(4)
